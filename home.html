@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studies Recommendation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .mynav {
+            border-radius: 10px;
+            box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.1); /* Increased shadow for mynav */
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background color */
+            color: white;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .container {
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Increased shadow for container */
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        .bg-image {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            transition: background-image 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image" id="bgImage">
+        <div class="mynav shadow-sm" style="background:transparent; color:white;text:bold; padding:10px;width:100%;">
+            <h1 class="text-center">Education Recommendation System</h1>
+        </div>
+
+        <div class="container mt-5">
+            <h1>Welcome to our Best Studies Recommendation System</h1>
+            <p>This recommendation system aims to assist university students in selecting the most suitable studies and courses based on their academic performance, interests, and career aspirations.</p>
+            <p>Click the button below to get recommendations:</p>
+            <a href="/recommend" class="btn btn-primary">Get Recommendations</a>
+        </div>
+    </div>
+
+    <script>
+        const images = ["static/img.png", "static/img_1.png", "static/img_2.png"]; // Update image paths
+        let currentIndex = 0;
+
+        function changeBackground() {
+            document.getElementById('bgImage').style.backgroundImage = `url('${images[currentIndex]}')`;
+            currentIndex = (currentIndex + 1) % images.length;
+            setTimeout(changeBackground, 4000); // Change every 2 seconds
+        }
+
+        changeBackground();
+    </script>
+</body>
+</html>

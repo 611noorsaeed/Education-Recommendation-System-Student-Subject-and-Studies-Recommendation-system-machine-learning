@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studies Recommendation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background-color: #fff;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function calculateScores() {
+            var mathScore = parseFloat(document.getElementById("math_score").value);
+            var historyScore = parseFloat(document.getElementById("history_score").value);
+            var physicsScore = parseFloat(document.getElementById("physics_score").value);
+            var chemistryScore = parseFloat(document.getElementById("chemistry_score").value);
+            var biologyScore = parseFloat(document.getElementById("biology_score").value);
+            var englishScore = parseFloat(document.getElementById("english_score").value);
+            var geographyScore = parseFloat(document.getElementById("geography_score").value);
+
+            var totalScore = mathScore + historyScore + physicsScore + chemistryScore + biologyScore + englishScore + geographyScore;
+            var averageScore = totalScore / 7;
+
+            document.getElementById("total_score").value = totalScore.toFixed(2);
+            document.getElementById("average_score").value = averageScore.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+<div class="mynav shadow-sm" style="background:black; color:white;text:bold; padding:10px;width:100%;">
+        <h1 class="text-center">Education Recommendation System</h1>
+    </div>
+<div class="container">
+    <h2 class="text-center">Fill in the details to get recommendations</h2>
+    <form method="post" action="/pred">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" id="gender" name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="part_time_job">Part-Time Job:</label>
+                    <select class="form-control" id="part_time_job" name="part_time_job">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="absence_days">Absence Days:</label>
+                    <input type="number" class="form-control" id="absence_days" name="absence_days">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="extracurricular_activities">Extracurricular Activities:</label>
+                    <select class="form-control" id="extracurricular_activities" name="extracurricular_activities">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="weekly_self_study_hours">Weekly Self-Study Hours:</label>
+                    <input type="number" class="form-control" id="weekly_self_study_hours" name="weekly_self_study_hours">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="math_score">Math Score:</label>
+                    <input type="number" class="form-control" id="math_score" name="math_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="history_score">History Score:</label>
+                    <input type="number" class="form-control" id="history_score" name="history_score" onchange="calculateScores()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="physics_score">Physics Score:</label>
+                    <input type="number" class="form-control" id="physics_score" name="physics_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="chemistry_score">Chemistry Score:</label>
+                    <input type="number" class="form-control" id="chemistry_score" name="chemistry_score" onchange="calculateScores()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="biology_score">Biology Score:</label>
+                    <input type="number" class="form-control" id="biology_score" name="biology_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="english_score">English Score:</label>
+                    <input type="number" class="form-control" id="english_score" name="english_score" onchange="calculateScores()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="geography_score">Geography Score:</label>
+                    <input type="number" class="form-control" id="geography_score" name="geography_score" onchange="calculateScores()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="total_score">Total Score:</label>
+                    <input type="number" class="form-control" id="total_score" name="total_score" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="average_score">Average Score:</label>
+                    <input type="number" step="0.000001" class="form-control" id="average_score" name="average_score" readonly>
+                </div>
+            </div>
+        </div>
+        <!-- Add more form fields here as needed -->
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

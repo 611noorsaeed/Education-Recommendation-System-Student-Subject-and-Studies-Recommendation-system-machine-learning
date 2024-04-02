@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resutls</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Top Recommended Studies with Probabilities</h1>
+        <ul class="list-group mt-3">
+            {% for recommendation in recommendations %}
+                <li class="list-group-item">{{ recommendation[0] }} with probability {{ recommendation[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
